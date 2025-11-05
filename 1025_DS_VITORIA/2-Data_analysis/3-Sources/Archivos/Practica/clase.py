@@ -39,7 +39,7 @@ class Ordenar_Carpeta:
         continue
 # condicionales para saber las extensiones
       if elemento.endswith(self.doc_types):
-        shutil.move(ruta_inicio, "./ej_descargas/doc_types")
+        shutil.move(ruta_inicio, "./ej_descargas/doc_types")  #mejoras: ir poniendo los prints paso a paso. Controlar si existe
       elif elemento.endswith(self.img_types):
         shutil.move(ruta_inicio, "./ej_descargas/img_types")
       elif elemento.endswith(self.software_types):

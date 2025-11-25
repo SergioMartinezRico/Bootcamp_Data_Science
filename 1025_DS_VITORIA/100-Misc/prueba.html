@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Diagrama ER - Base de Datos Alumnos Bootcamp</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #f5f6fa;
+        padding: 20px;
+      }
+      .entity {
+        fill: #e6f0ff;
+        stroke: #0b69ff;
+        stroke-width: 2;
+        rx: 8;
+        ry: 8;
+      }
+      .relation {
+        fill: #fff4e6;
+        stroke: #ff9f00;
+        stroke-width: 2;
+        stroke-dasharray: 4 2;
+        rx: 8;
+        ry: 8;
+      }
+      text {
+        font-size: 14px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Diagrama ER - Base de Datos Alumnos Bootcamp</h1>
+
+    <svg width="1000" height="600">
+      <!-- Alumno -->
+      <rect x="50" y="50" width="160" height="160" class="entity" />
+      <text x="60" y="70">Alumno</text>
+      <text x="60" y="90">alumno_id (PK)</text>
+      <text x="60" y="110">nombre</text>
+      <text x="60" y="130">apellido</text>
+      <text x="60" y="150">email</text>
+      <text x="60" y="170">fecha_comienzo</text>
+
+      <!-- Promocion -->
+      <rect x="300" y="50" width="160" height="100" class="entity" />
+      <text x="310" y="70">Promocion</text>
+      <text x="310" y="90">promocion_id (PK)</text>
+      <text x="310" y="110">nombre</text>
+      <text x="310" y="130">modalidad</text>
+
+      <!-- Campus -->
+      <rect x="300" y="200" width="160" height="100" class="entity" />
+      <text x="310" y="220">Campus</text>
+      <text x="310" y="240">campus_id (PK)</text>
+      <text x="310" y="260">nombre</text>
+      <text x="310" y="280">ciudad</text>
+
+      <!-- Profesor -->
+      <rect x="50" y="300" width="160" height="100" class="entity" />
+      <text x="60" y="320">Profesor</text>
+      <text x="60" y="340">profesor_id (PK)</text>
+      <text x="60" y="360">nombre</text>
+      <text x="60" y="380">apellido</text>
+      <text x="60" y="400">campus_id (FK)</text>
+
+      <!-- Tipo Bootcamp -->
+      <rect x="600" y="50" width="160" height="100" class="entity" />
+      <text x="610" y="70">Tipo_Bootcamp</text>
+      <text x="610" y="90">tipo_bootcamp_id (PK)</text>
+      <text x="610" y="110">nombre_tipo</text>
+
+      <!-- Proyecto -->
+      <rect x="600" y="200" width="160" height="100" class="entity" />
+      <text x="610" y="220">Proyecto</text>
+      <text x="610" y="240">proyecto_id (PK)</text>
+      <text x="610" y="260">nombre_proyecto</text>
+      <text x="610" y="280">tipo_bootcamp_id (FK)</text>
+
+      <!-- Alumno_Proyecto (relación N:M) -->
+      <rect x="350" y="350" width="160" height="80" class="relation" />
+      <text x="360" y="370">Alumno_Proyecto</text>
+      <text x="360" y="390">alumno_proyecto_id (PK)</text>
+      <text x="360" y="410">alumno_id (FK)</text>
+      <text x="360" y="430">proyecto_id (FK)</text>
+
+      <!-- Flechas -->
+      <!-- Alumno -> Promocion -->
+      <line
+        x1="210"
+        y1="130"
+        x2="300"
+        y2="100"
+        stroke="black"
+        marker-end="url(#arrow)"
+      />
+      <!-- Alumno -> Campus -->
+      <line
+        x1="130"
+        y1="210"
+        x2="300"
+        y2="250"
+        stroke="black"
+        marker-end="url(#arrow)"
+      />
+      <!-- Alumno -> Alumno_Proyecto -->
+      <line
+        x1="130"
+        y1="130"
+        x2="350"
+        y2="390"
+        stroke="black"
+        marker-end="url(#arrow)"
+      />
+      <!-- Proyecto -> Alumno_Proyecto -->
+      <line
+        x1="610"
+        y1="240"
+        x2="510"
+        y2="390"
+        stroke="black"
+        marker-end="url(#arrow)"
+      />
+      <!-- Proyecto -> Tipo_Bootcamp -->
+      <line
+        x1="610"
+        y1="240"
+        x2="700"
+        y2="100"
+        stroke="black"
+        marker-end="url(#arrow)"
+      />
+      <!-- Profesor -> Campus -->
+      <line
+        x1="130"
+        y1="350"
+        x2="300"
+        y2="250"
+        stroke="black"
+        marker-end="url(#arrow)"
+      />
+
+      <!-- Flechas definidas -->
+      <defs>
+        <marker
+          id="arrow"
+          markerWidth="10"
+          markerHeight="10"
+          refX="8"
+          refY="3"
+          orient="auto"
+          markerUnits="strokeWidth"
+        >
+          <path d="M0,0 L0,6 L9,3 z" fill="black" />
+        </marker>
+      </defs>
+    </svg>
+  </body>
+</html>
